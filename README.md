@@ -3,5 +3,5 @@
 
 ## Prerequisites  前提条件
 ## Getting Started 开始体验
-## Author 作者K
+## Author 作者
 ## License 授权
