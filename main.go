@@ -6,9 +6,10 @@ import (
 	"net/http"
 )
 
-func main(){
+func main() {
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-		fmt.Fprintf(writer,"Hello %s", "chrons")
+		fmt.Fprintf(writer, "Hello %s", "chrons")
 	})
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
