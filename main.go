@@ -7,18 +7,11 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-		writer.Header().Add("Content-Type", "text/html")
-		html := `
-<Doctype html>
-<html>
-<body>
-<a href="http://baidu.com" target="_blank">Hello world!</a>
-</body>
-</html>
-`
-		fmt.Fprintln(writer, html)
-	})
+	fs := http.FileServer(http.Dir("public"))
+	http.Handle("/", fs)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := 8080
+	log.Printf("Server is listening at port %d", port)
+	log.Printf( "Please visit http://localhost:%d", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
